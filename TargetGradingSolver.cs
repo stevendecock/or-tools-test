@@ -97,25 +97,8 @@ namespace Decock.Steven.TargetGradingSolver
             model.AddAbsEquality(passPctDeltaAbsSieve1, passPctDeltaSieve1);
             model.AddAbsEquality(passPctDeltaAbsSieve2, passPctDeltaSieve2);
 
-            // !!!!!!!!!!!!!!!!
-            // !!!! ISSUE !!!!!
-
             // Uncommenting the line below makes the solution INFEASIBLE.  Why?
             model.Add(volPctMaterial2 == 3000); // 30% of the mix needs to be material 2
-
-            // Observation #1:
-            // Uncommenting the above line does NOT make the solution INFEASIBLE if we remove the 
-            // two AddAbsEquality constraints.  Why?
-            // Why does adding a variable that is the ABS() of another value constrain the solution?
-            // There always is a value that is the ABS() of another value.  We are not mentioning
-            // passPctDeltaAbsSieve1 and passPctDeltaAbsSieve2 in any other constraints, so the algorithm 
-            // should always be able to find a value for them (the ABS() of passPctDeltaSieve1 and passPctDeltaSieve2)
-
-            // Observation #2:
-            // Changing the value 3000 (30% ) in the above constraint to 5000 (50%) makes the solution FEASIBLE.  Why?
-            // Both should be feasible.
-
-            // !!!!!!!!!!!!!!!!
 
             // [END constraints]
             // We minimize the sum of the absolute difference between the actual and target pass percentages for the mix.
