@@ -94,14 +94,14 @@ namespace Decock.Steven.TargetGradingSolver
             model.Add(passPctDeltaSieve2 == sieve2PassPctForMix - 50000000);
 
             // We now calculate the absolute values of these differences, so we can minimize their sum.
-            model.AddAbsEquality(passPctDeltaSieve1, passPctDeltaAbsSieve1);
-            model.AddAbsEquality(passPctDeltaSieve2, passPctDeltaAbsSieve2);
+            model.AddAbsEquality(passPctDeltaAbsSieve1, passPctDeltaSieve1);
+            model.AddAbsEquality(passPctDeltaAbsSieve1, passPctDeltaSieve2);
 
             // !!!!!!!!!!!!!!!!
             // !!!! ISSUE !!!!!
 
             // Uncommenting the line below makes the solution INFEASIBLE.  Why?
-            //model.Add(volPctMaterial2 == 3000); // 30% of the mix needs to be material 2
+            //model.Add(volPctMaterial2 == 5000); // 30% of the mix needs to be material 2
 
             // Observation #1:
             // Uncommenting the above line does NOT make the solution INFEASIBLE if we remove the 
